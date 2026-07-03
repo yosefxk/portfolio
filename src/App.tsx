@@ -56,7 +56,7 @@ function App() {
       <div className="cursor-glow" ref={cursorGlowRef} />
 
       <nav className="nav">
-        <a href="/" className="nav-logo">YK</a>
+        <a href="/" className="nav-logo">Joseph Lampert</a>
         <div className="nav-links">
           <a href="#projects" className="nav-link">Work</a>
           <a href="#stack" className="nav-link">Stack</a>

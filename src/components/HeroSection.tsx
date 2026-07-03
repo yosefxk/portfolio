@@ -70,7 +70,13 @@ export default function HeroSection() {
             </svg>
           </a>
           <a href="https://github.com/yosefxk" target="_blank" rel="noopener noreferrer" className="btn-secondary">
-            GitHub profile
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/JosephLampert" target="_blank" rel="noopener noreferrer" className="btn-secondary">
+            LinkedIn
+          </a>
+          <a href="mailto:josephnlampert@gmail.com" className="btn-secondary">
+            Message Me
           </a>
         </div>
 
