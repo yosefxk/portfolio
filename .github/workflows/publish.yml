@@ -53,4 +53,40 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+      - name: Connect to Tailscale
+        if: env.PORTAINER_WEBHOOK_URL != '' && env.TAILSCALE_AUTHKEY != ''
+        uses: tailscale/github-action@v3
+        with:
+          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
+        env:
+          PORTAINER_WEBHOOK_URL: ${{ secrets.PORTAINER_WEBHOOK_URL }}
+          TAILSCALE_AUTHKEY: ${{ secrets.TAILSCALE_AUTHKEY }}
+
+      - name: Trigger Portainer Redeploy Webhook
+        if: env.PORTAINER_WEBHOOK_URL != ''
+        continue-on-error: true
+        env:
+          PORTAINER_WEBHOOK_URL: ${{ secrets.PORTAINER_WEBHOOK_URL }}
+        run: |
+          if [[ ! "$PORTAINER_WEBHOOK_URL" =~ /api/stacks/webhooks/ ]]; then
+            echo "::warning::PORTAINER_WEBHOOK_URL does not look like a Portainer stack webhook endpoint"
+          fi
+          
+          if [[ "$PORTAINER_WEBHOOK_URL" == *\?* ]]; then
+            url_with_pull="${PORTAINER_WEBHOOK_URL}&pullImage=true"
+          else
+            url_with_pull="${PORTAINER_WEBHOOK_URL}?pullImage=true"
+          fi
+
+          status_code=$(curl -k -sS -o /tmp/portainer-response.txt -w "%{http_code}" -X POST "$url_with_pull" || true)
+          echo "HTTP status: $status_code"
+
+          if [[ "$status_code" -lt 200 || "$status_code" -ge 300 ]]; then
+            echo "::warning::Portainer webhook returned HTTP $status_code — check PORTAINER_WEBHOOK_URL secret"
+            echo "Response body:"
+            cat /tmp/portainer-response.txt || true
+          else
+            echo "Portainer redeploy triggered successfully"
+          fi
+
 
