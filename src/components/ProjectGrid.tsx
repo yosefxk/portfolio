@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import type { Project } from '../data/projects'
 
+const STATUS_LABELS: Record<Project['status'], string> = {
+  live: 'Live',
+  public: 'Public',
+  private: 'Private',
+  wip: 'WIP',
+}
+
 interface ProjectCardProps {
   project: Project
   index: number
@@ -13,14 +20,13 @@ export function ProjectCard({ project, index, onPreview }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false)
   const [visible, setVisible] = useState(false)
 
-  // Scroll reveal
   useEffect(() => {
     const el = cardRef.current
     if (!el) return
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => setVisible(true), index * 120)
+          setTimeout(() => setVisible(true), index * 100)
           observer.unobserve(el)
         }
       },
@@ -30,105 +36,82 @@ export function ProjectCard({ project, index, onPreview }: ProjectCardProps) {
     return () => observer.disconnect()
   }, [index])
 
-  // 3D tilt on mouse move
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return
     const rect = cardRef.current.getBoundingClientRect()
     const x = (e.clientY - rect.top) / rect.height - 0.5
     const y = (e.clientX - rect.left) / rect.width - 0.5
-    setTilt({ x: x * -12, y: y * 12 })
-  }
-
-  const handleMouseLeave = () => {
-    setTilt({ x: 0, y: 0 })
-    setIsHovered(false)
+    setTilt({ x: x * -10, y: y * 10 })
   }
 
   return (
     <div
       ref={cardRef}
-      className={`project-card ${visible ? 'visible' : ''} ${isHovered ? 'hovered' : ''}`}
+      className={`project-card ${visible ? 'visible' : ''}`}
       style={{
         '--card-color': project.color,
-        '--card-accent': project.accentColor,
-        transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) ${visible ? 'translateY(0)' : 'translateY(40px)'}`,
-        transitionDelay: `${index * 0.08}s`,
+        transform: `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+        opacity: visible ? 1 : 0,
+        translate: visible ? '0 0' : '0 32px',
+        transitionDelay: `${index * 0.09}s`,
       } as React.CSSProperties}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={handleMouseLeave}
+      onMouseLeave={() => { setTilt({ x: 0, y: 0 }); setIsHovered(false) }}
+      onClick={() => onPreview(project)}
+      role="button"
+      tabIndex={0}
+      onKeyDown={e => e.key === 'Enter' && onPreview(project)}
+      aria-label={`View ${project.name} details`}
     >
-      {/* Glowing top border */}
-      <div className="card-border-glow" />
+      {/* Top glow line */}
+      <div className="card-topline" style={{ background: project.gradient }} />
 
-      {/* Card header */}
-      <div className="card-header">
-        <div className="card-icon">{project.icon}</div>
-        <div className="card-status">
-          <span className={`status-dot status-${project.status}`} />
-          <span className="status-label">
-            {project.status === 'live' ? 'Live' : project.status === 'private' ? 'Private' : 'WIP'}
-          </span>
+      {/* Thumbnail */}
+      <div className="card-thumbnail-wrap">
+        <img
+          src={project.thumbnail}
+          alt={project.name}
+          className="card-thumbnail"
+          loading="lazy"
+        />
+        <div className="card-thumbnail-overlay" />
+      </div>
+
+      {/* Body */}
+      <div className="card-body">
+        <div className="card-header-row">
+          <span className="card-icon">{project.icon}</span>
+          <div className={`card-status card-status-${project.status}`}>
+            <span className="status-dot" />
+            {STATUS_LABELS[project.status]}
+          </div>
+        </div>
+
+        <h3 className="card-name">{project.name}</h3>
+        <p className="card-tagline">{project.tagline}</p>
+
+        <div className="card-stack">
+          {project.stack.slice(0, 4).map(t => (
+            <span key={t} className="stack-chip">{t}</span>
+          ))}
+          {project.stack.length > 4 && (
+            <span className="stack-chip stack-chip-more">+{project.stack.length - 4}</span>
+          )}
+        </div>
+
+        <div className="card-footer-row">
+          <span className="card-year">{project.year}</span>
+          <div className="card-arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M7 17L17 7M17 7H7M17 7v10" />
+            </svg>
+          </div>
         </div>
       </div>
 
-      {/* Card body */}
-      <h3 className="card-name">{project.name}</h3>
-      <p className="card-desc">{project.description}</p>
-
-      {/* Tech stack chips */}
-      <div className="card-stack">
-        {project.stack.map(tech => (
-          <span key={tech} className="stack-chip">{tech}</span>
-        ))}
-      </div>
-
-      {/* Actions */}
-      <div className="card-actions">
-        <button
-          className="btn-preview"
-          onClick={() => onPreview(project)}
-          aria-label={`Preview ${project.name}`}
-        >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
-          </svg>
-          Details
-        </button>
-
-        {project.liveUrl && (
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-live"
-            aria-label={`Open ${project.name}`}
-          >
-            Open App
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M7 17L17 7M17 7H7M17 7v10" />
-            </svg>
-          </a>
-        )}
-
-        {project.githubUrl && !project.liveUrl && (
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-github-card"
-            aria-label={`GitHub for ${project.name}`}
-          >
-            GitHub
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M7 17L17 7M17 7H7M17 7v10" />
-            </svg>
-          </a>
-        )}
-      </div>
-
-      {/* Shimmer overlay on hover */}
-      <div className="card-shimmer" />
+      {/* Hover shimmer */}
+      {isHovered && <div className="card-shimmer" />}
     </div>
   )
 }
@@ -143,44 +126,44 @@ interface ProjectGridProps {
 
 export default function ProjectGrid({ projects, allTags, activeFilter, onFilterChange, onPreview }: ProjectGridProps) {
   return (
-    <section id="projects" className="projects-section">
-      <div className="section-header">
-        <h2 className="section-title">
-          <span className="section-title-accent">Featured</span> Work
-        </h2>
-        <p className="section-subtitle">Click a card to explore, or filter by technology.</p>
-      </div>
+    <div className="project-grid-section">
+      <div className="grid-header">
+        <h3 className="grid-subheading">More projects</h3>
 
-      {/* Tech filter pills */}
-      <div className="filter-bar" role="toolbar" aria-label="Filter by technology">
-        <button
-          className={`filter-pill ${activeFilter === null ? 'active' : ''}`}
-          onClick={() => onFilterChange(null)}
-        >
-          All
-        </button>
-        {allTags.map(tag => (
+        {/* Filter pills */}
+        <div className="filter-bar" role="toolbar" aria-label="Filter by technology">
           <button
-            key={tag}
-            className={`filter-pill ${activeFilter === tag ? 'active' : ''}`}
-            onClick={() => onFilterChange(activeFilter === tag ? null : tag)}
+            className={`filter-pill ${activeFilter === null ? 'active' : ''}`}
+            onClick={() => onFilterChange(null)}
           >
-            {tag}
+            All
           </button>
-        ))}
+          {allTags.map(tag => (
+            <button
+              key={tag}
+              className={`filter-pill ${activeFilter === tag ? 'active' : ''}`}
+              onClick={() => onFilterChange(activeFilter === tag ? null : tag)}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* Cards grid */}
       <div className="projects-grid">
-        {projects.map((project, i) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            index={i}
-            onPreview={onPreview}
-          />
-        ))}
+        {projects.length === 0 ? (
+          <div className="grid-empty">No projects match this filter.</div>
+        ) : (
+          projects.map((project, i) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={i}
+              onPreview={onPreview}
+            />
+          ))
+        )}
       </div>
-    </section>
+    </div>
   )
 }

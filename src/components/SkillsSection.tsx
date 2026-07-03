@@ -2,74 +2,61 @@ import { useEffect, useRef, useState } from 'react'
 import type { Project } from '../data/projects'
 
 const TECH_ICONS: Record<string, string> = {
-  'React': '⚛️',
-  'TypeScript': '🔷',
-  'Express': '🟩',
-  'SQLite': '🗄️',
-  'Recharts': '📊',
-  'Docker': '🐳',
-  'Next.js': '▲',
-  'FastAPI': '⚡',
-  'Python': '🐍',
-  'OAuth': '🔐',
-  'Streamlit': '🎈',
+  'React': '⚛️', 'TypeScript': '🔷', 'Express': '🟩',
+  'SQLite': '🗄️', 'Recharts': '📊', 'Docker': '🐳',
+  'Next.js': '▲', 'FastAPI': '⚡', 'Python': '🐍',
+  'OAuth': '🔐', 'Streamlit': '🎈',
 }
 
-interface SkillsSectionProps {
-  projects: Project[]
-}
-
-export default function SkillsSection({ projects }: SkillsSectionProps) {
-  const sectionRef = useRef<HTMLElement>(null)
+export default function SkillsSection({ projects }: { projects: Project[] }) {
+  const ref = useRef<HTMLElement>(null)
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const el = sectionRef.current
+    const el = ref.current
     if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true)
-          observer.unobserve(el)
-        }
-      },
-      { threshold: 0.15 }
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.unobserve(el) } },
+      { threshold: 0.1 }
     )
-    observer.observe(el)
-    return () => observer.disconnect()
+    obs.observe(el)
+    return () => obs.disconnect()
   }, [])
 
-  // Count how many projects use each tech
-  const techCounts = projects
-    .flatMap(p => p.stack)
-    .reduce<Record<string, number>>((acc, tech) => {
-      acc[tech] = (acc[tech] || 0) + 1
-      return acc
-    }, {})
-
+  const techCounts = projects.flatMap(p => p.stack).reduce<Record<string, number>>((acc, t) => {
+    acc[t] = (acc[t] || 0) + 1; return acc
+  }, {})
   const techs = Object.entries(techCounts).sort((a, b) => b[1] - a[1])
 
   return (
-    <section ref={sectionRef} className={`skills-section ${visible ? 'visible' : ''}`}>
-      <div className="section-header">
-        <h2 className="section-title">
-          <span className="section-title-accent">Tech</span> Stack
-        </h2>
-        <p className="section-subtitle">Technologies powering these apps.</p>
-      </div>
+    <section id="stack" ref={ref} className={`skills-section ${visible ? 'visible' : ''}`}>
+      <div className="container">
+        <div className="work-header">
+          <h2 className="section-title">
+            <span className="gradient-text">Tech</span> Stack
+          </h2>
+          <p className="section-subtitle">Everything powering these projects.</p>
+        </div>
 
-      <div className="skills-grid">
-        {techs.map(([tech, count], i) => (
-          <div
-            key={tech}
-            className="skill-card"
-            style={{ animationDelay: `${i * 0.07}s` }}
-          >
-            <span className="skill-icon">{TECH_ICONS[tech] || '🔧'}</span>
-            <span className="skill-name">{tech}</span>
-            <span className="skill-count">{count} project{count > 1 ? 's' : ''}</span>
-          </div>
-        ))}
+        <div className="skills-grid">
+          {techs.map(([tech, count], i) => (
+            <div
+              key={tech}
+              className="skill-card"
+              style={{ animationDelay: visible ? `${i * 0.06}s` : '0s' }}
+            >
+              <span className="skill-icon">{TECH_ICONS[tech] || '🔧'}</span>
+              <span className="skill-name">{tech}</span>
+              <div className="skill-bar-wrap">
+                <div
+                  className="skill-bar"
+                  style={{ width: `${(count / projects.length) * 100}%` }}
+                />
+              </div>
+              <span className="skill-count">{count}/{projects.length} projects</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )

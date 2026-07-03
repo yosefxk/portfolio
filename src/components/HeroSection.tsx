@@ -1,75 +1,105 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+const WORDS = ['production apps', 'real APIs', 'live data', 'Docker containers', 'open data']
 
 export default function HeroSection() {
-  const titleRef = useRef<HTMLHeadingElement>(null)
+  const [wordIndex, setWordIndex] = useState(0)
+  const [displayed, setDisplayed] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [visible, setVisible] = useState(false)
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
 
   useEffect(() => {
-    // Staggered letter animation
-    if (!titleRef.current) return
-    const chars = titleRef.current.querySelectorAll('.char')
-    chars.forEach((char, i) => {
-      ;(char as HTMLElement).style.animationDelay = `${i * 0.06}s`
-    })
+    setTimeout(() => setVisible(true), 100)
   }, [])
 
-  const title = "My Projects"
+  // Typewriter effect
+  useEffect(() => {
+    const current = WORDS[wordIndex]
+    const speed = isDeleting ? 40 : 80
+    const pause = isDeleting ? 0 : 1800
+
+    if (!isDeleting && displayed === current) {
+      timeoutRef.current = setTimeout(() => setIsDeleting(true), pause)
+    } else if (isDeleting && displayed === '') {
+      setIsDeleting(false)
+      setWordIndex(i => (i + 1) % WORDS.length)
+    } else {
+      timeoutRef.current = setTimeout(() => {
+        setDisplayed(prev =>
+          isDeleting ? prev.slice(0, -1) : current.slice(0, prev.length + 1)
+        )
+      }, speed)
+    }
+
+    return () => clearTimeout(timeoutRef.current)
+  }, [displayed, isDeleting, wordIndex])
 
   return (
     <section className="hero">
-      {/* Animated grid lines background */}
-      <div className="hero-grid" aria-hidden="true" />
+      <div className="hero-bg" aria-hidden="true">
+        <div className="hero-orb hero-orb-1" />
+        <div className="hero-orb hero-orb-2" />
+        <div className="hero-orb hero-orb-3" />
+        <div className="hero-grid" />
+      </div>
 
-      {/* Radial glow */}
-      <div className="hero-glow" aria-hidden="true" />
-
-      <div className="hero-content">
-        <div className="hero-badge">
-          <span className="badge-dot" />
-          Available for collaboration
+      <div className={`hero-content ${visible ? 'visible' : ''}`}>
+        <div className="hero-eyebrow">
+          <span className="live-dot" />
+          <span>Open to collabs · Building in Israel</span>
         </div>
 
-        <h1 className="hero-title" ref={titleRef} aria-label={title}>
-          {title.split('').map((char, i) => (
-            <span key={i} className={`char ${char === ' ' ? 'space' : ''}`}>
-              {char}
-            </span>
-          ))}
+        <h1 className="hero-heading">
+          I build things with
+          <span className="typewriter-wrap">
+            <span className="typewriter-text">{displayed}</span>
+            <span className="typewriter-cursor" aria-hidden="true">|</span>
+          </span>
         </h1>
 
-        <p className="hero-subtitle">
-          A collection of real-world apps — from security monitoring to government data APIs.
-          <br />
-          Built for production. Deployed in Docker. Shipped.
+        <p className="hero-body">
+          Full-stack developer focused on data-heavy apps and live monitoring systems. Every project here is deployed, real, and solves an actual problem.
         </p>
 
-        <div className="hero-stats">
-          <div className="stat">
-            <span className="stat-number">4</span>
-            <span className="stat-label">Live Apps</span>
-          </div>
-          <div className="stat-divider" />
-          <div className="stat">
-            <span className="stat-number">174k+</span>
-            <span className="stat-label">DB Records</span>
-          </div>
-          <div className="stat-divider" />
-          <div className="stat">
-            <span className="stat-number">17+</span>
-            <span className="stat-label">APIs Integrated</span>
-          </div>
+        <div className="hero-actions">
+          <a href="#projects" className="btn-primary">
+            See the work
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="https://github.com/yosefxk" target="_blank" rel="noopener noreferrer" className="btn-secondary">
+            GitHub profile
+          </a>
         </div>
 
-        <a href="#projects" className="hero-cta">
-          See the work
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M7 17L17 7M17 7H7M17 7v10" />
-          </svg>
-        </a>
+        <div className="hero-stats">
+          {[
+            { num: '4', label: 'Apps deployed' },
+            { num: '174k+', label: 'DB records' },
+            { num: '17+', label: 'APIs wired' },
+            { num: '3', label: 'Languages' },
+          ].map(({ num, label }) => (
+            <div key={label} className="hero-stat">
+              <span className="hero-stat-num">{num}</span>
+              <span className="hero-stat-label">{label}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div className="hero-scroll-indicator" aria-hidden="true">
-        <div className="scroll-line" />
-      </div>
+      <button
+        className="hero-scroll-hint"
+        onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+        aria-label="Scroll to projects"
+      >
+        <div className="scroll-chevrons">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </div>
+      </button>
     </section>
   )
 }
