@@ -6,3 +6,9 @@ services:
     ports:
       - "4175:8080"
     restart: unless-stopped
+    networks:
+      - media_network
+
+networks:
+  media_network:
+    external: true
