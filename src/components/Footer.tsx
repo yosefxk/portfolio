@@ -26,7 +26,7 @@ export default function Footer() {
             </svg>
             GitHub
           </a>
-          <a href="https://oref.baileytv.tech" target="_blank" rel="noopener noreferrer" className="footer-link">
+          <a href="https://oref.BaileyTV.tech" target="_blank" rel="noopener noreferrer" className="footer-link">
             🚨 Tzeva Adom
           </a>
         </div>

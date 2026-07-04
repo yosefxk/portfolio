@@ -115,7 +115,7 @@ export default function FeaturedProject({ project, onPreview }: FeaturedProjectP
 
         <div className="featured-status-row">
           <span className="live-dot" />
-          <span className="featured-status-text">Live · oref.baileytv.tech</span>
+          <span className="featured-status-text">Live · oref.BaileyTV.tech</span>
         </div>
       </div>
     </div>
