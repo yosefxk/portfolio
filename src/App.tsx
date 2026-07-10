@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Portfolio from './components/Portfolio'
-import Homelab from './components/Homelab'
+// import Homelab from './components/Homelab'
 
 function App() {
   return (
