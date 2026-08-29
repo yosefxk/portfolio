@@ -1,29 +1,40 @@
 import { useEffect, useRef, useState } from 'react'
 
-const WORDS = ['production apps', 'real APIs', 'live data', 'Docker containers', 'open data']
+const DOMAINS = [
+  'Data Infrastructure',
+  'Autonomous Telemetry',
+  'Technical Programs (TPM)',
+  'Enterprise AI Systems',
+  'Real-Time Platforms'
+]
 
-export default function HeroSection() {
-  const [wordIndex, setWordIndex] = useState(0)
+interface HeroSectionProps {
+  onOpenContact: () => void
+}
+
+export default function HeroSection({ onOpenContact }: HeroSectionProps) {
+  const [domainIndex, setDomainIndex] = useState(0)
   const [displayed, setDisplayed] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
   const [visible, setVisible] = useState(false)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
 
   useEffect(() => {
-    setTimeout(() => setVisible(true), 100)
+    const t = setTimeout(() => setVisible(true), 60)
+    return () => clearTimeout(t)
   }, [])
 
   // Typewriter effect
   useEffect(() => {
-    const current = WORDS[wordIndex]
-    const speed = isDeleting ? 40 : 80
-    const pause = isDeleting ? 0 : 1800
+    const current = DOMAINS[domainIndex]
+    const speed = isDeleting ? 25 : 60
+    const pause = isDeleting ? 0 : 2200
 
     if (!isDeleting && displayed === current) {
       timeoutRef.current = setTimeout(() => setIsDeleting(true), pause)
     } else if (isDeleting && displayed === '') {
       setIsDeleting(false)
-      setWordIndex(i => (i + 1) % WORDS.length)
+      setDomainIndex(i => (i + 1) % DOMAINS.length)
     } else {
       timeoutRef.current = setTimeout(() => {
         setDisplayed(prev =>
@@ -33,7 +44,7 @@ export default function HeroSection() {
     }
 
     return () => clearTimeout(timeoutRef.current)
-  }, [displayed, isDeleting, wordIndex])
+  }, [displayed, isDeleting, domainIndex])
 
   return (
     <section className="hero">
@@ -47,49 +58,56 @@ export default function HeroSection() {
       <div className={`hero-content ${visible ? 'visible' : ''}`}>
         <div className="hero-eyebrow">
           <span className="live-dot" />
-          <span>Open to collabs · Building in Israel</span>
+          <span className="eyebrow-text">
+            <strong>Mobileye</strong> Data Infra TPM · Ex-Amdocs · Ex-Intel · Valedictorian
+          </span>
         </div>
 
         <h1 className="hero-heading">
-          I build things with
-          <span className="typewriter-wrap">
-            <span className="typewriter-text">{displayed}</span>
+          Engineering High-Scale
+          <br className="heading-br" />
+          <span className="typewriter-line">
+            <span className="gradient-text">{displayed}</span>
             <span className="typewriter-cursor" aria-hidden="true">|</span>
           </span>
         </h1>
 
         <p className="hero-body">
-          Full-stack developer focused on data-heavy apps and live monitoring systems. Every project here is deployed, real, and solves an actual problem.
+          Data Infrastructure & Systems Engineer and Technical Program Manager. Proven track record directing <strong>18 concurrent automotive OEM programs</strong>, scaling telemetry lakes, cutting pipeline latency by <strong>98%</strong>, and architecting AI operations platforms.
         </p>
 
         <div className="hero-actions">
           <a href="#projects" className="btn-primary">
-            See the work
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            Explore Systems & Apps
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </a>
-          <a href="https://github.com/yosefxk" target="_blank" rel="noopener noreferrer" className="btn-secondary">
-            GitHub
+
+          <a href="#experience" className="btn-secondary">
+            Career Milestones
           </a>
-          <a href="https://www.linkedin.com/in/JosephLampert" target="_blank" rel="noopener noreferrer" className="btn-secondary">
-            LinkedIn
-          </a>
-          <a href="mailto:josephnlampert@gmail.com" className="btn-secondary">
-            Message Me
-          </a>
+
+          <button onClick={onOpenContact} className="btn-secondary btn-connect">
+            <span className="connect-dot" />
+            Get in Touch
+          </button>
         </div>
 
+        {/* Quantified impact badges */}
         <div className="hero-stats">
           {[
-            { num: '4', label: 'Apps deployed' },
-            { num: '174k+', label: 'DB records' },
-            { num: '17+', label: 'APIs wired' },
-            { num: '3', label: 'Languages' },
-          ].map(({ num, label }) => (
+            { num: '18', label: 'OEM Programs (Mobileye)', sub: 'Automotive Data Delivery' },
+            { num: '98%', label: 'Latency Cut', sub: '90s down to <2s' },
+            { num: '$1M+', label: 'Annual Cost Savings', sub: 'Intel Analytics & Automation' },
+            { num: '174k+', label: 'Real-Time Records', sub: 'Civil Defense Telemetry' },
+            { num: '17+', label: 'Parallel Gov APIs', sub: 'Vehicle Intel Ingestion' },
+            { num: '95.5', label: 'Valedictorian', sub: 'Summa Cum Laude (B.Sc.)' }
+          ].map(({ num, label, sub }) => (
             <div key={label} className="hero-stat">
-              <span className="hero-stat-num">{num}</span>
+              <span className="hero-stat-num gradient-text">{num}</span>
               <span className="hero-stat-label">{label}</span>
+              <span className="hero-stat-sub">{sub}</span>
             </div>
           ))}
         </div>
