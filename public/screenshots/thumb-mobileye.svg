@@ -1,0 +1,217 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080c16" />
+      <stop offset="50%" stop-color="#0b1120" />
+      <stop offset="100%" stop-color="#060911" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00c2ff" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#141d33" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0e1526" stop-opacity="0.6" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.7" stroke-opacity="0.4" />
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="1000" fill="url(#bgGrad)" />
+  <rect width="1600" height="1000" fill="url(#grid)" />
+
+  <!-- Ambient Glow Blobs -->
+  <circle cx="300" cy="250" r="220" fill="#00c2ff" fill-opacity="0.08" filter="url(#glow)" />
+  <circle cx="1300" cy="350" r="260" fill="#3b82f6" fill-opacity="0.08" filter="url(#glow)" />
+  <circle cx="800" cy="700" r="200" fill="#6366f1" fill-opacity="0.05" filter="url(#glow)" />
+
+  <!-- Main System Canvas -->
+  <g transform="translate(100, 80)">
+    <!-- Header Bar -->
+    <rect x="0" y="0" width="1400" height="70" rx="14" fill="#0f172a" fill-opacity="0.8" stroke="#1e293b" stroke-width="1.5" />
+    
+    <!-- Dots -->
+    <circle cx="35" cy="35" r="7" fill="#ef4444" fill-opacity="0.8" />
+    <circle cx="60" cy="35" r="7" fill="#eab308" fill-opacity="0.8" />
+    <circle cx="85" cy="35" r="7" fill="#22c55e" fill-opacity="0.8" />
+    
+    <text x="120" y="42" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="600" letter-spacing="1">
+      MOBILEYE AUTONOMOUS TELEMETRY PLATFORM // 30+ ADAS &amp; AV INGESTION PIPELINE
+    </text>
+    
+    <!-- Status Badge -->
+    <rect x="1140" y="20" width="230" height="30" rx="15" fill="#0369a1" fill-opacity="0.3" stroke="#0284c7" stroke-width="1" />
+    <circle cx="1160" cy="35" r="4" fill="#38bdf8" />
+    <text x="1175" y="41" fill="#bae6fd" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">
+      PRODUCTION ENTERPRISE
+    </text>
+
+    <!-- Center Stage: 4 Connected Architecture Modules -->
+    
+    <!-- Module 1: Vehicle Ingestion -->
+    <g transform="translate(0, 130)">
+      <rect x="0" y="0" width="280" height="360" rx="16" fill="url(#cardGrad)" stroke="#0284c7" stroke-width="1.5" stroke-opacity="0.4" />
+      <rect x="24" y="24" width="48" height="48" rx="12" fill="#0284c7" fill-opacity="0.2" />
+      <text x="36" y="55" fill="#38bdf8" font-size="24">📡</text>
+      
+      <text x="24" y="115" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700">
+        Vehicle Sensor Feeds
+      </text>
+      <text x="24" y="145" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="500">
+        Multi-modal raw sensor data
+      </text>
+
+      <g transform="translate(24, 180)">
+        <rect x="0" y="0" width="232" height="34" rx="8" fill="#1e293b" fill-opacity="0.6" />
+        <text x="14" y="22" fill="#cbd5e1" font-family="monospace" font-size="12">📸 8x High-Res Video Logs</text>
+
+        <rect x="0" y="44" width="232" height="34" rx="8" fill="#1e293b" fill-opacity="0.6" />
+        <text x="14" y="66" fill="#cbd5e1" font-family="monospace" font-size="12">📡 Radar &amp; LiDAR Streams</text>
+
+        <rect x="0" y="88" width="232" height="34" rx="8" fill="#1e293b" fill-opacity="0.6" />
+        <text x="14" y="110" fill="#cbd5e1" font-family="monospace" font-size="12">🚗 High-Freq CAN Bus</text>
+
+        <rect x="0" y="132" width="232" height="28" rx="6" fill="#0284c7" fill-opacity="0.15" />
+        <text x="14" y="151" fill="#38bdf8" font-family="sans-serif" font-size="11" font-weight="600">30+ Customer Programs</text>
+      </g>
+    </g>
+
+    <!-- Connector 1 -->
+    <path d="M 290 310 L 350 310" stroke="#0284c7" stroke-width="2.5" stroke-dasharray="6,4" />
+    <polygon points="360,310 348,303 348,317" fill="#0284c7" />
+
+    <!-- Module 2: 10-Gate Protocol & Intake Gateway -->
+    <g transform="translate(370, 130)">
+      <rect x="0" y="0" width="280" height="360" rx="16" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.4" />
+      <rect x="24" y="24" width="48" height="48" rx="12" fill="#38bdf8" fill-opacity="0.2" />
+      <text x="36" y="55" fill="#38bdf8" font-size="24">🛡️</text>
+      
+      <text x="24" y="115" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700">
+        10-Gate Ingestion
+      </text>
+      <text x="24" y="145" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="500">
+        Operational readiness engine
+      </text>
+
+      <g transform="translate(24, 180)">
+        <rect x="0" y="0" width="232" height="34" rx="8" fill="#1e293b" fill-opacity="0.6" />
+        <text x="14" y="22" fill="#cbd5e1" font-family="monospace" font-size="12">⚡ 14-Day Onboarding SLA</text>
+
+        <rect x="0" y="44" width="232" height="34" rx="8" fill="#1e293b" fill-opacity="0.6" />
+        <text x="14" y="66" fill="#cbd5e1" font-family="monospace" font-size="12">⚙️ 50+ Automation Modules</text>
+
+        <rect x="0" y="88" width="232" height="34" rx="8" fill="#1e293b" fill-opacity="0.6" />
+        <text x="14" y="110" fill="#cbd5e1" font-family="monospace" font-size="12">🔍 Schema Drift Guard</text>
+
+        <rect x="0" y="132" width="232" height="28" rx="6" fill="#0284c7" fill-opacity="0.15" />
+        <text x="14" y="151" fill="#38bdf8" font-family="sans-serif" font-size="11" font-weight="600">Cross-Team R&amp;D Alignment</text>
+      </g>
+    </g>
+
+    <!-- Connector 2 -->
+    <path d="M 660 310 L 720 310" stroke="#6366f1" stroke-width="2.5" stroke-dasharray="6,4" />
+    <polygon points="730,310 718,303 718,317" fill="#6366f1" />
+
+    <!-- Module 3: Distributed Processing & Storage -->
+    <g transform="translate(740, 130)">
+      <rect x="0" y="0" width="280" height="360" rx="16" fill="url(#cardGrad)" stroke="#6366f1" stroke-width="1.5" stroke-opacity="0.4" />
+      <rect x="24" y="24" width="48" height="48" rx="12" fill="#6366f1" fill-opacity="0.2" />
+      <text x="36" y="55" fill="#a5b4fc" font-size="24">📦</text>
+      
+      <text x="24" y="115" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700">
+        Telemetry Data Lake
+      </text>
+      <text x="24" y="145" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="500">
+        Petabyte-scale distributed batch
+      </text>
+
+      <g transform="translate(24, 180)">
+        <rect x="0" y="0" width="232" height="34" rx="8" fill="#1e293b" fill-opacity="0.6" />
+        <text x="14" y="22" fill="#cbd5e1" font-family="monospace" font-size="12">☸️ Kubernetes &amp; Argo</text>
+
+        <rect x="0" y="44" width="232" height="34" rx="8" fill="#1e293b" fill-opacity="0.6" />
+        <text x="14" y="66" fill="#cbd5e1" font-family="monospace" font-size="12">☁️ AWS S3 / Glacier Lake</text>
+
+        <rect x="0" y="88" width="232" height="34" rx="8" fill="#1e293b" fill-opacity="0.6" />
+        <text x="14" y="110" fill="#cbd5e1" font-family="monospace" font-size="12">🗂️ 12k+ Indexed Datasets</text>
+
+        <rect x="0" y="132" width="232" height="28" rx="6" fill="#6366f1" fill-opacity="0.15" />
+        <text x="14" y="151" fill="#a5b4fc" font-family="sans-serif" font-size="11" font-weight="600">5,000 Session Rerun Campaigns</text>
+      </g>
+    </g>
+
+    <!-- Connector 3 -->
+    <path d="M 1030 310 L 1090 310" stroke="#10b981" stroke-width="2.5" stroke-dasharray="6,4" />
+    <polygon points="1100,310 1088,303 1088,317" fill="#10b981" />
+
+    <!-- Module 4: 98% Latency Cut & Fast Query Engine -->
+    <g transform="translate(1110, 130)">
+      <rect x="0" y="0" width="280" height="360" rx="16" fill="url(#cardGrad)" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.4" />
+      <rect x="24" y="24" width="48" height="48" rx="12" fill="#10b981" fill-opacity="0.2" />
+      <text x="36" y="55" fill="#34d399" font-size="24">⚡</text>
+      
+      <text x="24" y="115" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700">
+        Fast Triage Index
+      </text>
+      <text x="24" y="145" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="500">
+        Bottleneck remediation
+      </text>
+
+      <g transform="translate(24, 180)">
+        <rect x="0" y="0" width="232" height="34" rx="8" fill="#1e293b" fill-opacity="0.6" />
+        <text x="14" y="22" fill="#34d399" font-family="monospace" font-size="12" font-weight="700">🚀 98% Latency Cut</text>
+
+        <rect x="0" y="44" width="232" height="34" rx="8" fill="#1e293b" fill-opacity="0.6" />
+        <text x="14" y="66" fill="#cbd5e1" font-family="monospace" font-size="12">⏱️ 90s Down to &lt;2s Triage</text>
+
+        <rect x="0" y="88" width="232" height="34" rx="8" fill="#1e293b" fill-opacity="0.6" />
+        <text x="14" y="110" fill="#cbd5e1" font-family="monospace" font-size="12">🧠 Algorithm Validation</text>
+
+        <rect x="0" y="132" width="232" height="28" rx="6" fill="#10b981" fill-opacity="0.15" />
+        <text x="14" y="151" fill="#34d399" font-family="sans-serif" font-size="11" font-weight="600">Zero Blocking Dependencies</text>
+      </g>
+    </g>
+
+    <!-- Bottom Stat Summary Bar -->
+    <g transform="translate(0, 540)">
+      <rect x="0" y="0" width="1400" height="230" rx="16" fill="#0f172a" fill-opacity="0.7" stroke="#1e293b" stroke-width="1.5" />
+      
+      <!-- Stat 1 -->
+      <g transform="translate(60, 45)">
+        <text x="0" y="45" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="44" font-weight="900">30+</text>
+        <text x="0" y="80" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="700">ADAS &amp; AV Projects</text>
+        <text x="0" y="105" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13">Inception to Data Readiness</text>
+      </g>
+      <line x1="340" y1="40" x2="340" y2="180" stroke="#334155" stroke-width="1" />
+
+      <!-- Stat 2 -->
+      <g transform="translate(400, 45)">
+        <text x="0" y="45" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="44" font-weight="900">98%</text>
+        <text x="0" y="80" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="700">Triage Latency Cut</text>
+        <text x="0" y="105" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13">90s down to &lt;2s on Cloud Logs</text>
+      </g>
+      <line x1="680" y1="40" x2="680" y2="180" stroke="#334155" stroke-width="1" />
+
+      <!-- Stat 3 -->
+      <g transform="translate(740, 45)">
+        <text x="0" y="45" fill="#818cf8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="44" font-weight="900">14 Days</text>
+        <text x="0" y="80" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="700">10-Gate Protocol</text>
+        <text x="0" y="105" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13">Onboarding down from months</text>
+      </g>
+      <line x1="1020" y1="40" x2="1020" y2="180" stroke="#334155" stroke-width="1" />
+
+      <!-- Stat 4 -->
+      <g transform="translate(1080, 45)">
+        <text x="0" y="45" fill="#f59e0b" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="44" font-weight="900">12,000+</text>
+        <text x="0" y="80" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="700">Production Datasets</text>
+        <text x="0" y="105" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13">Cataloged &amp; Validated</text>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -9,8 +9,8 @@ export default function Footer({ onOpenContact }: FooterProps) {
     <footer className="footer">
       <div className="container footer-inner">
         <div className="footer-left">
-          <span className="footer-logo">Joseph (יוסף) Lampert</span>
-          <span className="footer-tagline">Data Infrastructure & Systems Engineer · Technical Program Manager (TPM)</span>
+          <span className="footer-logo">Joseph Lampert</span>
+          <span className="footer-tagline">Technical Program Manager (TPM) · Data Infrastructure & Systems</span>
           <span className="footer-copy">
             © {year} · Built with React 19 + TypeScript + Vite · Deployed on BaileyTV Homelab
           </span>

@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 
 const DOMAINS = [
+  'Technical Programs (TPM)',
+  'Generative AI & Agentic Ops',
   'Data Infrastructure',
   'Autonomous Telemetry',
-  'Technical Programs (TPM)',
-  'Enterprise AI Systems',
-  'Real-Time Platforms'
+  'Cross-Functional Delivery',
+  'Distributed Systems'
 ]
 
 interface HeroSectionProps {
@@ -59,7 +60,7 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
         <div className="hero-eyebrow">
           <span className="live-dot" />
           <span className="eyebrow-text">
-            <strong>Mobileye</strong> Data Infra TPM · Ex-Amdocs · Ex-Intel · Valedictorian
+            <strong>Mobileye</strong> Data Infra TPM · Dual US & Israeli Citizen · Ex-Amdocs · Ex-Intel · Valedictorian
           </span>
         </div>
 
@@ -73,7 +74,7 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
         </h1>
 
         <p className="hero-body">
-          Data Infrastructure & Systems Engineer and Technical Program Manager. Proven track record directing <strong>18 concurrent automotive OEM programs</strong>, scaling telemetry lakes, cutting pipeline latency by <strong>98%</strong>, and architecting AI operations platforms.
+          Technical Program Manager (TPM) & Data Infrastructure Systems Engineer. Proven track record directing <strong>30+ ADAS & AV projects from inception to data-collection readiness</strong>, scaling autonomous sensor telemetry lakes, architecting <strong>Generative AI copilots & agentic automation</strong> that offload support and cut cloud triage latency by <strong>98% (90s to &lt;2s)</strong> across 12,000+ recording datasets. Dual US & Israeli citizen actively exploring US relocation and high-impact TPM leadership roles.
         </p>
 
         <div className="hero-actions">
@@ -94,20 +95,112 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
           </button>
         </div>
 
-        {/* Quantified impact badges */}
-        <div className="hero-stats">
+        {/* Quantified impact clusters grouped by institutional origin */}
+        <div className="hero-stat-clusters">
           {[
-            { num: '18', label: 'OEM Programs (Mobileye)', sub: 'Automotive Data Delivery' },
-            { num: '98%', label: 'Latency Cut', sub: '90s down to <2s' },
-            { num: '$1M+', label: 'Annual Cost Savings', sub: 'Intel Analytics & Automation' },
-            { num: '174k+', label: 'Real-Time Records', sub: 'Civil Defense Telemetry' },
-            { num: '17+', label: 'Parallel Gov APIs', sub: 'Vehicle Intel Ingestion' },
-            { num: '95.5', label: 'Valedictorian', sub: 'Summa Cum Laude (B.Sc.)' }
-          ].map(({ num, label, sub }) => (
-            <div key={label} className="hero-stat">
-              <span className="hero-stat-num gradient-text">{num}</span>
-              <span className="hero-stat-label">{label}</span>
-              <span className="hero-stat-sub">{sub}</span>
+            {
+              id: 'mobileye',
+              origin: 'Mobileye',
+              icon: '🚗',
+              color: '#00c2ff',
+              metrics: [
+                {
+                  num: '30+',
+                  label: 'ADAS & AV Projects',
+                  sub: 'Inception to Readiness & Delivery'
+                },
+                {
+                  num: '98%',
+                  label: 'Triage Latency Cut',
+                  sub: '90s to <2s on Cloud Pipelines'
+                }
+              ]
+            },
+            {
+              id: 'amdocs',
+              origin: 'Amdocs',
+              icon: '⚡',
+              color: '#6366f1',
+              metrics: [
+                {
+                  num: '10+',
+                  label: 'Custom Streamlit Apps',
+                  sub: 'Rapid User Prototyping & Delivery'
+                }
+              ]
+            },
+            {
+              id: 'intel',
+              origin: 'Intel',
+              icon: '🔷',
+              color: '#0284c7',
+              metrics: [
+                {
+                  num: '$1M+',
+                  label: 'Annual Cost Savings',
+                  sub: 'Supply Chain ROI & Analytics'
+                }
+              ]
+            },
+            {
+              id: 'homelab',
+              origin: 'BaileyTV',
+              icon: '🏠',
+              color: '#10b981',
+              metrics: [
+                {
+                  num: '5+',
+                  label: 'Custom Apps Deployed',
+                  sub: 'Containerized Microservices'
+                }
+              ]
+            },
+            {
+              id: 'education',
+              origin: 'Shenkar College',
+              icon: '🎓',
+              color: '#f59e0b',
+              metrics: [
+                {
+                  num: '1st 🏆',
+                  label: 'Valedictorian',
+                  sub: 'Summa Cum Laude'
+                }
+              ]
+            }
+          ].map((cluster) => (
+            <div
+              key={cluster.id}
+              className={`hero-stat-cluster cluster-${cluster.id}`}
+              style={{ '--cluster-color': cluster.color } as React.CSSProperties}
+            >
+              <div className="cluster-accent-bar" style={{ background: cluster.color }} />
+              
+              <div className="cluster-header">
+                <span
+                  className="cluster-pill"
+                  style={{
+                    color: cluster.color,
+                    borderColor: `${cluster.color}40`,
+                    background: `${cluster.color}14`
+                  }}
+                >
+                  <span className="cluster-icon">{cluster.icon}</span>
+                  <span className="cluster-name">{cluster.origin}</span>
+                </span>
+              </div>
+
+              <div className={`cluster-metrics-grid cluster-grid-${cluster.metrics.length}`}>
+                {cluster.metrics.map((m) => (
+                  <div key={m.label} className="cluster-metric-item">
+                    <span className="cluster-metric-num" style={{ color: cluster.color }}>
+                      {m.num}
+                    </span>
+                    <span className="cluster-metric-label">{m.label}</span>
+                    <span className="cluster-metric-sub">{m.sub}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>

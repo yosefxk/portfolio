@@ -15,21 +15,21 @@ export const experiences: ExperienceItem[] = [
   {
     id: 'mobileye',
     company: 'Mobileye',
-    role: 'Data Infrastructure Project Manager',
+    role: 'Data Infrastructure Technical Program Manager (TPM)',
     period: '2025 – Present',
     location: 'Jerusalem, Israel',
     badge: 'Current',
     color: '#00c2ff',
-    summary: 'Directing cross-functional data delivery for petabyte-scale autonomous vehicle sensor telemetry across global automotive OEM programs.',
+    summary: 'Directing cross-functional technical program delivery for petabyte-scale autonomous vehicle sensor telemetry across 30+ ADAS & AV projects from inception to data-collection readiness.',
     highlights: [
-      'Directed technical program delivery across 18 concurrent automotive OEM programs, aligning Algorithm, Software, and System Integration teams.',
-      'Accelerated program onboarding from several months to 14 days by architecting a 10-gate readiness protocol and automated intake workflows.',
-      'Diagnosed and resolved critical distributed cloud bottlenecks, cutting workflow latency by 98% (90+ seconds down to under 2 seconds).',
+      'Directed technical program delivery across 30+ ADAS & AV projects, taking them from initial inception through operational delivery and readiness for global data collection.',
+      'Accelerated program onboarding from several months to 14 days by architecting a 10-gate operational readiness protocol and automated intake workflows.',
+      'Diagnosed and resolved distributed cloud bottlenecks, cutting telemetry query and triage latency by 98% (from 90+ seconds down to under 2 seconds across 12,000+ recording datasets) for global engineering orgs.',
       'Authored 50+ internal automation modules and 40+ Python tools, eliminating manual triage overhead across 12,000+ production datasets.',
       'Orchestrated large-scale vehicle sensor telemetry rerun campaigns across distributed batch workers for up to 5,000 recording sessions per campaign.',
       'Established automated metadata cataloging and data integrity validations for petabyte-scale video and CAN bus recording lakes.'
     ],
-    tags: ['Distributed Telemetry', 'Kubernetes / Argo', 'AWS S3 / Glacier', 'Python', 'OEM Delivery', 'TPM']
+    tags: ['TPM Delivery', '30+ ADAS & AV Projects', 'Distributed Telemetry', 'AWS S3 / Glacier', 'Kubernetes / Argo', '98% Latency Cut']
   },
   {
     id: 'amdocs',
@@ -40,12 +40,13 @@ export const experiences: ExperienceItem[] = [
     color: '#6366f1',
     summary: 'Architected scalable ETL/ELT pipelines, transformation workflows, and analytical models for enterprise clients and AI initiatives.',
     highlights: [
+      'Developed and rapidly deployed 10+ custom Streamlit data applications for internal business users, democratizing complex analytical querying and KPI tracking.',
       'Designed low-latency data infrastructure and transformation pipelines using Python and SQL (Snowflake/dbt) to power enterprise AI initiatives.',
-      'Developed automated data cleansing and transformation workflows, establishing engineering best practices across analytics pipelines.',
       'Engineered scalable batch ingestion handling millions of structured transactional records with a 99.9% data delivery SLA.',
+      'Developed automated data cleansing, validation, and transformation workflows, establishing engineering best practices across analytics pipelines.',
       'Authored advanced analytical SQL models and telemetry dashboards, delivering real-time operational visibility for enterprise client accounts.'
     ],
-    tags: ['Snowflake', 'dbt', 'Python', 'SQL', 'ETL/ELT', 'AI Pipelines', '99.9% SLA']
+    tags: ['Streamlit', 'Snowflake', 'dbt', 'Python', 'Advanced SQL', 'ETL/ELT', '99.9% SLA', 'AI Pipelines']
   },
   {
     id: 'intel',
@@ -59,7 +60,7 @@ export const experiences: ExperienceItem[] = [
       'Championed cost-optimization initiatives through data analytics and Python/VBA automation, delivering over $1,000,000 in annual operational savings.',
       'Constructed executive KPI reporting pipelines to streamline manufacturing and supply chain resource allocation.'
     ],
-    tags: ['Cost Optimization', '$1M+ ROI', 'Python Automation', 'Analytics', 'KPI Pipelines']
+    tags: ['Cost Optimization', '$1M+ ROI', 'Python Automation', 'Supply Chain Analytics', 'Executive KPIs']
   },
   {
     id: 'navy',
@@ -71,9 +72,9 @@ export const experiences: ExperienceItem[] = [
     color: '#3b82f6',
     summary: 'Led high-stakes naval operations and cross-functional teams under intense, dynamic operational conditions.',
     highlights: [
-      'Commanded naval teams in high-tempo operational environments, demonstrating decisive leadership, risk management, and mission-critical execution.'
+      'Commanded naval teams in high-tempo operational environments, demonstrating decisive leadership, risk management, and mission-critical execution under intense pressure.'
     ],
-    tags: ['Executive Leadership', 'High-Stakes Decision Making', 'Crisis Management', 'Team Command']
+    tags: ['Decisive Leadership', 'High-Stakes Decision Making', 'Crisis Management', 'Team Command']
   },
   {
     id: 'shenkar',
@@ -83,11 +84,11 @@ export const experiences: ExperienceItem[] = [
     location: 'Israel',
     badge: 'Valedictorian (Summa Cum Laude)',
     color: '#ec4899',
-    summary: 'Graduated as Class Valedictorian with Summa Cum Laude honors (GPA 95.5), specializing in data systems, operations research, and software architecture.',
+    summary: 'Graduated as Class Valedictorian with Summa Cum Laude honors, specializing in data systems, operations research, and software architecture.',
     highlights: [
-      'Class Valedictorian — Summa Cum Laude (GPA: 95.5 / 100).',
-      'Advanced coursework in algorithms, relational and distributed databases, statistical modeling, and systems engineering.'
+      'Class Valedictorian — Summa Cum Laude honors.',
+      'Specialized in distributed databases, algorithm design, statistical modeling, and data systems architecture.'
     ],
-    tags: ['Valedictorian', 'Summa Cum Laude', 'GPA 95.5', 'Industrial Engineering', 'Operations Research']
+    tags: ['Valedictorian', 'Summa Cum Laude', 'Operations Research', 'Distributed Systems']
   }
 ]

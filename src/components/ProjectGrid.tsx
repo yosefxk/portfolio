@@ -4,7 +4,7 @@ import type { Project } from '../data/projects'
 const STATUS_LABELS: Record<Project['status'], string> = {
   live: 'Live on BaileyTV',
   public: 'Public Open Source',
-  private: 'Private Deploy',
+  private: 'Enterprise System',
   wip: 'In Development',
 }
 
@@ -175,17 +175,17 @@ interface ProjectGridProps {
 
 const CATEGORIES = [
   { id: 'all', label: 'All Systems' },
-  { id: 'data', label: 'Data & Systems' },
-  { id: 'ai', label: 'AI & Automation' },
-  { id: 'fullstack', label: 'Real-Time & Full-Stack' },
-  { id: 'mobile', label: 'Mobile & Algorithms' },
-  { id: 'infra', label: 'DevOps & Media' },
+  { id: 'infra', label: 'Enterprise & Telemetry' },
+  { id: 'data', label: 'Data & Streaming' },
+  { id: 'ai', label: 'AI & Ingestion' },
+  { id: 'fullstack', label: 'Real-Time Apps' },
+  { id: 'mobile', label: 'IoT & Hardware' },
 ]
 
 export default function ProjectGrid({ projects, activeFilter, onFilterChange, onPreview }: ProjectGridProps) {
   const filtered = activeFilter === 'all'
     ? projects
-    : projects.filter(p => p.category === activeFilter)
+    : projects.filter(p => p.category === activeFilter || (p.categories && p.categories.includes(activeFilter as any)))
 
   return (
     <div className="project-grid-section">

@@ -128,7 +128,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         </div>
 
         <div className="contact-modal-footer">
-          <span className="location-badge">📍 Dual Citizen (US & Israel) · Open to Relocation & Remote</span>
+          <span className="location-badge">📍 Dual US & Israeli Citizen · Open to US Relocation & Remote</span>
         </div>
       </div>
     </div>

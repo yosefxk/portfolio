@@ -50,7 +50,7 @@ export default function PreviewModal({ project, onClose }: { project: Project; o
           <div className="modal-thumb-wrap">
             <div className="modal-window-bar">
               <span className="dot red" /><span className="dot yellow" /><span className="dot green" />
-              <span className="window-title">{project.name} — Production UI</span>
+              <span className="window-title">{project.name} — {project.status === 'private' ? 'Enterprise Architecture Blueprint' : 'Production UI'}</span>
             </div>
             <img
               src={project.thumbnail}
@@ -108,9 +108,25 @@ export default function PreviewModal({ project, onClose }: { project: Project; o
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z" />
                   </svg>
-                  Architecture & Data Flow
+                  Architecture & Pipeline Data Flow
                 </h5>
-                <p className="arch-flow-text">{project.architecture}</p>
+                <div className="arch-pipeline-flow">
+                  {project.architecture.split(' ➔ ').map((stage, idx, arr) => (
+                    <div key={idx} className="arch-pipeline-step">
+                      <div className="arch-step-pill">
+                        <span className="arch-step-num">{idx + 1}</span>
+                        <span className="arch-step-text">{stage}</span>
+                      </div>
+                      {idx < arr.length - 1 && (
+                        <div className="arch-step-arrow" aria-hidden="true">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* Highlights List */}
@@ -154,6 +170,12 @@ export default function PreviewModal({ project, onClose }: { project: Project; o
                   </svg>
                   Inspect Source Code
                 </a>
+              )}
+              {!project.liveUrl && !project.githubUrl && (
+                <div className="modal-enterprise-notice">
+                  <span className="enterprise-shield">🔒</span>
+                  <span>Enterprise Proprietary Platform · Mobileye Autonomous Telemetry Lake</span>
+                </div>
               )}
             </div>
           </div>

@@ -25,7 +25,7 @@ export default function HomelabSection() {
             <span className="gradient-text">BaileyTV</span> Homelab & Zero-Trust Cloud
           </h2>
           <p className="section-subtitle">
-            An enterprise-grade, zero-trust private cloud running production microservices, AI facial recognition, and continuous telemetry monitoring from home.
+            A private Linux production server running containerized microservices, custom web applications, AI services, and continuous telemetry monitoring behind Cloudflare Zero-Trust.
           </p>
         </div>
 
@@ -47,7 +47,7 @@ export default function HomelabSection() {
             className={`hl-tab-btn ${activeTab === 'specs' ? 'active' : ''}`}
             onClick={() => setActiveTab('specs')}
           >
-            ⚡ Enterprise Observability & Specs
+            ⚡ Host Specs & Observability
           </button>
         </div>
 
@@ -105,6 +105,7 @@ export default function HomelabSection() {
             <div className="hl-services-pane animate-fade-in">
               <div className="services-grid">
                 {[
+                  { name: 'Custom Production Web Apps', icon: '🚀', desc: 'Primary host for 5+ self-developed microservices (Tzeva Adom, Plate Finder, TLV Flights, TubeVault, CareerQuest) in isolated Docker containers with automated deployments.' },
                   { name: 'Immich', icon: '📸', desc: 'Self-hosted Google Photos alternative with on-device ML facial recognition & object detection.' },
                   { name: 'Jellyfin & *arr Stack', icon: '🎬', desc: 'Automated 4K HDR media server integrated with Radarr and Sonarr automation.' },
                   { name: 'Prometheus & Grafana', icon: '📊', desc: 'Real-time telemetry scraping node metrics, container health, and latency.' },
@@ -129,7 +130,7 @@ export default function HomelabSection() {
               <div className="specs-grid">
                 <div className="spec-box">
                   <span className="spec-lbl">Compute & Virtualization</span>
-                  <span className="spec-val">Intel Multi-Core · Docker Engine · Portainer EE</span>
+                  <span className="spec-val">Intel Multi-Core · Dedicated Server Host · Docker Engine · Portainer EE</span>
                 </div>
                 <div className="spec-box">
                   <span className="spec-lbl">Storage Architecture</span>

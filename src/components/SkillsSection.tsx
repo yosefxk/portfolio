@@ -58,14 +58,14 @@ const SKILL_CATEGORIES: SkillCategory[] = [
     icon: '🧠',
     color: '#f59e0b',
     skills: [
+      'Conversational AI & PM Copilots',
+      'Agentic Workflows & Runbooks',
       'Multi-Provider LLM Gateways',
-      'Google Gemini, OpenAI, Claude',
-      'Local Models (Ollama / Groq)',
-      'Headless Playwright Automation',
-      'Deterministic ATS Scoring',
-      'Automated Incident Triage',
-      'AI Ops Workflows',
-      'Prompt Engineering & Blueprints'
+      'Google Gemini, Claude, OpenAI',
+      'Local Open Models (Ollama)',
+      'Automated Incident & Telemetry Triage',
+      'AI Ops & Workflow Automation',
+      'Prompt Engineering & Tool Calling'
     ]
   },
   {
@@ -74,13 +74,14 @@ const SKILL_CATEGORIES: SkillCategory[] = [
     color: '#ec4899',
     skills: [
       'Technical Program Management (TPM)',
-      'Automotive OEM & Tier-1 Integration',
-      '10-Gate Onboarding Protocols',
-      'Cross-Functional Alignment (R&D / Ops)',
-      'Naval Command (Captain Res.)',
-      'Summa Cum Laude Valedictorian',
-      'Agile / Scrum Sprint Leadership',
-      'Cost Optimization ($1M+ Savings)'
+      '30+ ADAS & AV Projects Delivery',
+      'Automotive OEM & Tier-1 Delivery',
+      '10-Gate Operational Readiness Protocols',
+      'Cross-Functional Alignment (R&D / Systems)',
+      'Decisive Naval Command (Captain Res.)',
+      '1st 🏆 Valedictorian (Summa Cum Laude)',
+      'Distributed Latency Cuts (98% Gain)',
+      'Operational Cost Optimization ($1M+ ROI)'
     ]
   }
 ]
