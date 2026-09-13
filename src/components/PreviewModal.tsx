@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import type { Project } from '../data/projects'
+import TelemetryPipelineFlowchart from './TelemetryPipelineFlowchart'
 
 export default function PreviewModal({ project, onClose }: { project: Project; onClose: () => void }) {
   const backdropRef = useRef<HTMLDivElement>(null)
@@ -103,31 +104,35 @@ export default function PreviewModal({ project, onClose }: { project: Project; o
               </div>
 
               {/* Architecture Data Flow */}
-              <div className="modal-architecture-box">
-                <h5 className="arch-title">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z" />
-                  </svg>
-                  Architecture & Pipeline Data Flow
-                </h5>
-                <div className="arch-pipeline-flow">
-                  {project.architecture.split(' ➔ ').map((stage, idx, arr) => (
-                    <div key={idx} className="arch-pipeline-step">
-                      <div className="arch-step-pill">
-                        <span className="arch-step-num">{idx + 1}</span>
-                        <span className="arch-step-text">{stage}</span>
-                      </div>
-                      {idx < arr.length - 1 && (
-                        <div className="arch-step-arrow" aria-hidden="true">
-                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                          </svg>
+              {project.id === 'mobileye-telemetry' ? (
+                <TelemetryPipelineFlowchart />
+              ) : (
+                <div className="modal-architecture-box">
+                  <h5 className="arch-title">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z" />
+                    </svg>
+                    Architecture & Pipeline Data Flow
+                  </h5>
+                  <div className="arch-pipeline-flow">
+                    {project.architecture.split(' ➔ ').map((stage, idx, arr) => (
+                      <div key={idx} className="arch-pipeline-step">
+                        <div className="arch-step-pill">
+                          <span className="arch-step-num">{idx + 1}</span>
+                          <span className="arch-step-text">{stage}</span>
                         </div>
-                      )}
-                    </div>
-                  ))}
+                        {idx < arr.length - 1 && (
+                          <div className="arch-step-arrow" aria-hidden="true">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                              <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Highlights List */}
               <div className="modal-highlights">
