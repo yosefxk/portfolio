@@ -32,8 +32,8 @@ export const projects: Project[] = [
     category: 'infra',
     categories: ['infra', 'ai'],
     categoryLabel: 'Enterprise TPM, Telemetry & AI',
-    description: 'Directing technical program delivery for petabyte-scale autonomous vehicle sensor telemetry across 30+ ADAS/AV projects, deploying an embedded Generative AI PM Copilot, and engineering agentic triage automation.',
-    longDescription: 'As Data Infrastructure Technical Program Manager at Mobileye, directing end-to-end program execution across Algorithm, Software, Hardware, and System Integration teams. Architected an intelligent conversational AI chatbot integrated into the PM Bringup Dashboard, enabling PMs to query blocker status, session diagnostics, and program ETAs in natural language while offering self-service guidance on complex telemetry tools and data schemas. Pioneered 50+ agent-native automation runbooks that accelerated customer program onboarding from months down to 14 days, and cut telemetry query triage latency by 98% (<2s) across 12,000+ recording datasets.',
+    description: 'Direct technical program delivery for petabyte-scale autonomous vehicle sensor telemetry across 30+ ADAS/AV projects, deploying an embedded Generative AI PM Copilot, and engineering agentic triage automation.',
+    longDescription: 'As Data Infrastructure Technical Program Manager at Mobileye, directing end-to-end program execution across Algorithm, Software, Hardware, and System Integration teams. Architect an intelligent conversational AI chatbot integrated into the PM Bringup Dashboard, enabling PMs to query blocker status, session diagnostics, and program ETAs in natural language while offering self-service guidance on complex telemetry tools and data schemas. Pioneer 50+ agent-native automation runbooks that accelerated customer program onboarding from months down to 14 days, and cut telemetry query triage latency by 98% (<2s) across 12,000+ recording datasets.',
     problem: 'Autonomous vehicle validation demands petabyte-scale multi-sensor data delivery (high-res camera feeds, radar, LiDAR, CAN bus telemetry) across dozens of automotive OEMs. Without standardized intake and automated triage, programs suffered from multi-month delays, high cloud query latency, and frequent support bottlenecks for non-technical PMs.',
     solution: 'Engineered a standardized 10-gate operational intake framework, built an embedded Generative AI PM Copilot for conversational status and telemetry queries, authored 50+ agent-native triage automation runbooks, and optimized cloud query paths to ensure continuous data integrity for machine learning and algorithm validation.',
     architecture: 'Vehicle Multi-Sensor Loggers (Camera/Radar/LiDAR/CAN) ➔ 10-Gate Intake & Verification Engine ➔ Cloud Ingestion Gateway ➔ Distributed Batch Processing (Kubernetes / Argo) ➔ Parquet Telemetry Lake (AWS S3 / Glacier) ➔ Embedded GenAI PM Copilot & Fast Triage (<2s Latency).',
@@ -52,11 +52,11 @@ export const projects: Project[] = [
       { label: 'Triage Latency Cut', value: '98% (90s ➔ <2s)' }
     ],
     highlights: [
-      'Directing technical delivery across 30+ ADAS & AV projects from inception to collection readiness',
-      'Engineered conversational AI chatbot in PM bringup dashboard to query blockers, session telemetry, and program ETAs',
-      'Offloaded repetitive PM tool onboarding and explanations via automated, context-aware AI advisory workflows',
-      'Architected 10-gate operational readiness protocol, reducing customer onboarding from months to 14 days',
-      'Authored 50+ agent-native automation and triage runbooks across 12,000+ production sensor datasets'
+      'Direct technical delivery across 30+ ADAS & AV projects from inception to collection readiness',
+      'Engineer conversational AI chatbot in PM bringup dashboard to query blockers, session telemetry, and program ETAs',
+      'Offload repetitive PM tool onboarding and explanations via automated, context-aware AI advisory workflows',
+      'Architect 10-gate operational readiness protocol, reducing customer onboarding from months to 14 days',
+      'Author 50+ agent-native automation and triage runbooks across 12,000+ production sensor datasets'
     ]
   },
   {

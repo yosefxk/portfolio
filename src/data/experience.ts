@@ -20,14 +20,14 @@ export const experiences: ExperienceItem[] = [
     location: 'Jerusalem, Israel',
     badge: 'Current',
     color: '#00c2ff',
-    summary: 'Directing cross-functional technical program delivery for petabyte-scale autonomous vehicle sensor telemetry across 30+ ADAS & AV projects from inception to data-collection readiness.',
+    summary: 'Direct technical program delivery for petabyte-scale autonomous vehicle sensor telemetry across 30+ ADAS & AV projects from inception to data-collection readiness.',
     highlights: [
-      'Directed technical program delivery across 30+ ADAS & AV projects, taking them from initial inception through operational delivery and readiness for global data collection.',
-      'Accelerated program onboarding from several months to 14 days by architecting a 10-gate operational readiness protocol and automated intake workflows.',
-      'Diagnosed and resolved distributed cloud bottlenecks, cutting telemetry query and triage latency by 98% (from 90+ seconds down to under 2 seconds across 12,000+ recording datasets) for global engineering orgs.',
-      'Authored 50+ internal automation modules and 40+ Python tools, eliminating manual triage overhead across 12,000+ production datasets.',
-      'Orchestrated large-scale vehicle sensor telemetry rerun campaigns across distributed batch workers for up to 5,000 recording sessions per campaign.',
-      'Established automated metadata cataloging and data integrity validations for petabyte-scale video and CAN bus recording lakes.'
+      'Direct technical program delivery across 30+ ADAS & AV projects, taking them from initial inception through operational delivery and readiness for global data collection.',
+      'Accelerate program onboarding from several months to 14 days by architecting a 10-gate operational readiness protocol and automated intake workflows.',
+      'Diagnose and resolve distributed cloud bottlenecks, cutting telemetry query and triage latency by 98% (from 90+ seconds down to under 2 seconds across 12,000+ recording datasets) for global engineering orgs.',
+      'Deploy an embedded Generative AI PM Copilot into the bringup dashboard to unblock query bottlenecks, and engineer 50+ automation modules eliminating manual triage.',
+      'Orchestrate large-scale vehicle sensor telemetry rerun campaigns across distributed batch workers for up to 5,000 recording sessions per campaign.',
+      'Govern automated metadata cataloging and data integrity validations across petabyte-scale video and CAN bus recording lakes.'
     ],
     tags: ['TPM Delivery', '30+ ADAS & AV Projects', 'Distributed Telemetry', 'AWS S3 / Glacier', 'Kubernetes / Argo', '98% Latency Cut']
   },
