@@ -46,6 +46,26 @@ function Portfolio() {
     }
   }, [])
 
+  // Deep-link modal query parameter support
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const modalParam = params.get('modal')
+    if (modalParam === 'contact') {
+      setIsContactOpen(true)
+    } else if (modalParam) {
+      const found = projects.find(p => p.id === modalParam)
+      if (found) setPreviewProject(found)
+    }
+
+    if (window.location.hash) {
+      const targetHash = window.location.hash
+      setTimeout(() => {
+        const el = document.querySelector(targetHash)
+        if (el) el.scrollIntoView({ behavior: 'auto' })
+      }, 100)
+    }
+  }, [])
+
   const featuredProjects = projects.filter(p => p.featured)
 
   return (

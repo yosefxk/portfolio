@@ -15,6 +15,16 @@ export default function PreviewModal({ project, onClose }: { project: Project; o
     }
   }, [onClose])
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('scroll') === 'flowchart') {
+      setTimeout(() => {
+        const fc = document.querySelector('.flowchart-container')
+        if (fc) fc.scrollIntoView()
+      }, 100)
+    }
+  }, [])
+
   return (
     <div
       ref={backdropRef}
