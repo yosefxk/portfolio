@@ -242,6 +242,23 @@ const Homelab: React.FC = () => {
                     <span className="text-[10px] bg-black/30 px-1.5 py-0.5 rounded text-slate-300">TypeScript</span>
                   </div>
                 </a>
+
+                <a href="https://nadlan.baileytv.tech/" target="_blank" rel="noopener noreferrer" className="card p-4 border border-white/5 bg-white/5 rounded-2xl hover:border-indigo-500/50 hover:bg-white/10 transition-all group block md:col-span-2">
+                  <div className="inline-block px-2 py-0.5 mb-2 rounded-full bg-indigo-500/10 text-indigo-400 text-[9px] font-bold uppercase tracking-wider">
+                    Big Data & Geospatial
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">Nadlan Deals Explorer ↗</h3>
+                  <p className="text-slate-400 text-xs mb-3">
+                    3.84M+ Israeli Tax Authority real estate transactions indexed with sub-100ms multi-dimensional filtering, dynamic national heatmaps covering 1,000+ towns, and longitudinal trend analytics.
+                  </p>
+                  <div className="flex gap-2 flex-wrap">
+                    <span className="text-[10px] bg-black/30 px-1.5 py-0.5 rounded text-slate-300">FastAPI</span>
+                    <span className="text-[10px] bg-black/30 px-1.5 py-0.5 rounded text-slate-300">SQLite (WAL)</span>
+                    <span className="text-[10px] bg-black/30 px-1.5 py-0.5 rounded text-slate-300">React 18</span>
+                    <span className="text-[10px] bg-black/30 px-1.5 py-0.5 rounded text-slate-300">Leaflet</span>
+                    <span className="text-[10px] bg-black/30 px-1.5 py-0.5 rounded text-slate-300">Recharts</span>
+                  </div>
+                </a>
               </div>
             </div>
           )}

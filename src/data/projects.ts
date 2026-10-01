@@ -93,6 +93,42 @@ export const projects: Project[] = [
     ]
   },
   {
+    id: 'nadlan-deals',
+    name: 'Nadlan Deals Explorer',
+    tagline: '3.8M+ Israeli Real Estate Transaction Warehouse & Geospatial Heatmap',
+    category: 'data',
+    categories: ['data', 'fullstack'],
+    categoryLabel: 'Big Data & Geospatial',
+    description: 'High-performance real estate exploration engine and interactive cadastral heatmap indexing 3.84M+ Israeli Tax Authority transactions across 1,300+ settlements with sub-100ms multi-dimensional filtering.',
+    longDescription: 'A self-hosted, open-source real estate intelligence platform indexing the complete national database of 3.84 million real estate transactions reported to the Israel Tax Authority from 1998 to 2026. Features an asynchronous keyset-paginated ingestion engine with rate-limit backoff, multi-dimensional drill-down search (rooms, area, floor, year built, normalized price-per-sqm), an interactive national Leaflet heatmap covering 1,020+ settlements with dynamic price/volume color scales, multi-city longitudinal comparison charts, and on-demand cadastral parcel geolocation.',
+    problem: 'Official tax authority data is fragmented, locked behind restrictive search quotas (150 results per query), and lacks macro-trend visualization, multi-city trend overlays, or responsive mobile navigation.',
+    solution: 'Built a high-performance Python/FastAPI backend backed by a WAL-mode SQLite analytical store with custom C/Python median aggregates, combined with a responsive RTL React 18 frontend featuring Recharts and Leaflet geospatial clustering.',
+    architecture: 'Open Data Keyset Ingestion Pipeline ➔ SQLite Analytical Store (3.84M Deals, WAL, Custom Median Aggregates) ➔ FastAPI Async REST API ➔ React 18 + Vite + Leaflet Heatmap + Recharts.',
+    stack: ['React', 'TypeScript', 'FastAPI', 'Python', 'SQLite', 'Leaflet', 'Recharts', 'TailwindCSS', 'Docker'],
+    color: '#4f46e5',
+    gradient: 'linear-gradient(135deg, #4f46e5 0%, #3730a3 100%)',
+    liveUrl: 'https://nadlan.baileytv.tech',
+    githubUrl: 'https://github.com/yosefxk/nadlan-deals-dashboard',
+    icon: '🏢',
+    thumbnail: '/screenshots/thumb-nadlan.png',
+    featured: true,
+    status: 'live',
+    year: 2026,
+    metrics: [
+      { label: 'Transactions Indexed', value: '3.84M+ Deals' },
+      { label: 'Settlements Mapped', value: '1,020+ Cities' },
+      { label: 'Query Latency', value: '<100ms Search' },
+      { label: 'Temporal Coverage', value: '1998–2026 (28y)' }
+    ],
+    highlights: [
+      'Complete national ingestion of 3.84M+ real estate records from open tax authority archives',
+      'Dynamic national heatmap with color-coded price and transaction density metrics for 1,000+ towns',
+      'Multi-dimensional drill-down filtering by city, rooms, area, year built, and normalized price-per-sqm',
+      'Multi-settlement historical trend comparison with longitudinal Recharts visualization',
+      'Cadastral block/parcel (גוש/חלקה) resolution and nearby deal spatial proximity analysis'
+    ]
+  },
+  {
     id: 'tzeva-adom',
     name: 'Tzeva Adom',
     tagline: 'Real-Time Civil Defense Alert Streaming & Geospatial Analytics',

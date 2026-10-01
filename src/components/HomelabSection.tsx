@@ -105,7 +105,7 @@ export default function HomelabSection() {
             <div className="hl-services-pane animate-fade-in">
               <div className="services-grid">
                 {[
-                  { name: 'Custom Production Web Apps', icon: '🚀', desc: 'Primary host for 5+ self-developed microservices (Tzeva Adom, Plate Finder, TLV Flights, TubeVault, CareerQuest) in isolated Docker containers with automated deployments.' },
+                  { name: 'Custom Production Web Apps', icon: '🚀', desc: 'Primary host for 6+ self-developed microservices (Nadlan Deals Explorer, Tzeva Adom, Plate Finder, TLV Flights, TubeVault, CareerQuest) in isolated Docker containers with automated deployments.' },
                   { name: 'Immich', icon: '📸', desc: 'Self-hosted Google Photos alternative with on-device ML facial recognition & object detection.' },
                   { name: 'Jellyfin & *arr Stack', icon: '🎬', desc: 'Automated 4K HDR media server integrated with Radarr and Sonarr automation.' },
                   { name: 'Prometheus & Grafana', icon: '📊', desc: 'Real-time telemetry scraping node metrics, container health, and latency.' },
