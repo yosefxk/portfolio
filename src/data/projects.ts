@@ -110,7 +110,7 @@ export const projects: Project[] = [
     liveUrl: 'https://nadlan.baileytv.tech',
     githubUrl: 'https://github.com/yosefxk/nadlan-deals-dashboard',
     icon: '🏢',
-    thumbnail: '/screenshots/thumb-nadlan.png',
+    thumbnail: '/screenshots/thumb-nadlan-v2.png',
     featured: true,
     status: 'live',
     year: 2026,
