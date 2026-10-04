@@ -243,7 +243,7 @@ const Homelab: React.FC = () => {
                   </div>
                 </a>
 
-                <a href="https://nadlan.baileytv.tech/" target="_blank" rel="noopener noreferrer" className="card p-4 border border-white/5 bg-white/5 rounded-2xl hover:border-indigo-500/50 hover:bg-white/10 transition-all group block md:col-span-2">
+                <a href="https://nadlan.baileytv.tech/" target="_blank" rel="noopener noreferrer" className="card p-4 border border-white/5 bg-white/5 rounded-2xl hover:border-indigo-500/50 hover:bg-white/10 transition-all group block">
                   <div className="inline-block px-2 py-0.5 mb-2 rounded-full bg-indigo-500/10 text-indigo-400 text-[9px] font-bold uppercase tracking-wider">
                     Big Data & Geospatial
                   </div>
@@ -257,6 +257,22 @@ const Homelab: React.FC = () => {
                     <span className="text-[10px] bg-black/30 px-1.5 py-0.5 rounded text-slate-300">React 18</span>
                     <span className="text-[10px] bg-black/30 px-1.5 py-0.5 rounded text-slate-300">Leaflet</span>
                     <span className="text-[10px] bg-black/30 px-1.5 py-0.5 rounded text-slate-300">Recharts</span>
+                  </div>
+                </a>
+
+                <a href="https://kids.baileytv.tech/" target="_blank" rel="noopener noreferrer" className="card p-4 border border-white/5 bg-white/5 rounded-2xl hover:border-pink-500/50 hover:bg-white/10 transition-all group block">
+                  <div className="inline-block px-2 py-0.5 mb-2 rounded-full bg-pink-500/10 text-pink-400 text-[9px] font-bold uppercase tracking-wider">
+                    Family & Parenting
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-pink-400 transition-colors">Baby Tracker ↗</h3>
+                  <p className="text-slate-400 text-xs mb-3">
+                    Privacy-focused multi-child journal for feedings, sleep timers, diaper changes, and developmental milestones with zero-email WhatsApp invite links.
+                  </p>
+                  <div className="flex gap-2 flex-wrap">
+                    <span className="text-[10px] bg-black/30 px-1.5 py-0.5 rounded text-slate-300">Next.js 16</span>
+                    <span className="text-[10px] bg-black/30 px-1.5 py-0.5 rounded text-slate-300">TypeScript</span>
+                    <span className="text-[10px] bg-black/30 px-1.5 py-0.5 rounded text-slate-300">Recharts</span>
+                    <span className="text-[10px] bg-black/30 px-1.5 py-0.5 rounded text-slate-300">Docker</span>
                   </div>
                 </a>
               </div>

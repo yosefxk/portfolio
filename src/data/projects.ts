@@ -296,5 +296,42 @@ export const projects: Project[] = [
       'Sunlight-optimized high-contrast color scheme for outdoor visibility',
       'Automated court side-switch alerts and double-tap undo safeguards'
     ]
+  },
+  {
+    id: 'baby-tracker',
+    name: 'Baby Tracker',
+    tagline: 'Multi-Child Parenting Tracker with Granular Permissions & Live Timers',
+    category: 'fullstack',
+    categories: ['fullstack', 'mobile'],
+    categoryLabel: 'Fullstack & Family Health',
+    description: 'Privacy-first parenting companion for tracking feedings, sleep cycles, diaper changes, and milestones across multiple children with granular co-parenting roles and manual WhatsApp invite links.',
+    longDescription: 'A self-hosted, responsive online web application engineered for parents and caregivers to log infant health, nutrition, sleep cycles, diaper changes, and developmental milestones in real time. Features a multi-child architecture with instantaneous child switching, live breastfeeding (left/right split) and sleep stopwatches, 7-day trend analytics via Recharts, an offline-ready babysitter cheat sheet, and a 1-tap MDA infant emergency protocol guide. Includes granular role-based permissions (Parent, Caregiver, Viewer), manual WhatsApp/SMS invite link generation with zero email dependencies, and an admin dashboard for user lifecycle management.',
+    problem: 'Commercial parenting apps suffer from intrusive ad subscriptions, cloud privacy vulnerabilities with sensitive baby data, and lack flexible multi-child switching or granular permissions for babysitters and grandparents.',
+    solution: 'Built an autonomous, self-hosted Next.js 16 fullstack application with atomic JSON persistence, role-based access control, live client stopwatches, and zero third-party telemetry, fully containerized with automated CI/CD to GHCR.',
+    architecture: 'Next.js 16 (App Router + Turbopack) ➔ Atomic Persistence Layer ➔ Recharts Analytics ➔ Containerized Standalone Runner ➔ Docker / GHCR ➔ Portainer & Nginx Proxy Manager.',
+    stack: ['Next.js 16', 'React', 'TypeScript', 'TailwindCSS', 'Recharts', 'Docker', 'GHCR', 'Portainer'],
+    color: '#ec4899',
+    gradient: 'linear-gradient(135deg, #ec4899 0%, #f43f5e 100%)',
+    liveUrl: 'https://kids.baileytv.tech',
+    githubUrl: 'https://github.com/yosefxk/baby-tracker',
+    icon: '👶',
+    thumbnail: '/screenshots/thumb-baby-tracker.png',
+    featured: true,
+    status: 'live',
+    year: 2026,
+    metrics: [
+      { label: 'Architecture', value: 'Multi-Child' },
+      { label: 'Permissions', value: 'Granular RBAC' },
+      { label: 'Data Sovereignty', value: '100% Self-Hosted' },
+      { label: 'Invites', value: 'Zero-Email Links' }
+    ],
+    highlights: [
+      'Multi-child support with instant switching and isolated records',
+      'Granular co-parenting permissions (Parent, Caregiver, Viewer)',
+      'Live stopwatches for breastfeeding (left/right split) and sleep',
+      'Zero-email manual invitation links for WhatsApp and SMS',
+      'Interactive 7-day trend charts for sleep, milk intake, and diapers',
+      'Babysitter routine guide and MDA infant emergency speed-dial'
+    ]
   }
 ]
