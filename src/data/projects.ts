@@ -146,7 +146,7 @@ export const projects: Project[] = [
     liveUrl: 'https://oref.BaileyTV.tech',
     githubUrl: 'https://github.com/yosefxk/tzeva-adom-dashboard',
     icon: '🚨',
-    thumbnail: '/screenshots/thumb-tzeva-adom.png?v=2',
+    thumbnail: '/screenshots/thumb-tzeva-adom-new.png',
     featured: true,
     status: 'live',
     year: 2025,

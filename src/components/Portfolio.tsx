@@ -17,32 +17,47 @@ function Portfolio() {
   const [isContactOpen, setIsContactOpen] = useState(false)
   const cursorGlowRef = useRef<HTMLDivElement>(null)
 
-  // Smooth cursor glow with lerp
+  // Smooth cursor glow with lerp (pauses when idle, disabled on touch devices)
   useEffect(() => {
+    if (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) {
+      return
+    }
+
     let x = 0, y = 0
     let tx = 0, ty = 0
-    let raf: number
+    let raf: number | null = null
+    let isMoving = false
+
+    const animate = () => {
+      const dx = tx - x
+      const dy = ty - y
+      if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
+        x += dx * 0.08
+        y += dy * 0.08
+        if (cursorGlowRef.current) {
+          cursorGlowRef.current.style.left = `${x}px`
+          cursorGlowRef.current.style.top = `${y}px`
+        }
+        raf = requestAnimationFrame(animate)
+      } else {
+        isMoving = false
+        raf = null
+      }
+    }
 
     const handleMouseMove = (e: MouseEvent) => {
       tx = e.clientX
       ty = e.clientY
-    }
-
-    const animate = () => {
-      x += (tx - x) * 0.08
-      y += (ty - y) * 0.08
-      if (cursorGlowRef.current) {
-        cursorGlowRef.current.style.left = `${x}px`
-        cursorGlowRef.current.style.top = `${y}px`
+      if (!isMoving) {
+        isMoving = true
+        raf = requestAnimationFrame(animate)
       }
-      raf = requestAnimationFrame(animate)
     }
 
     window.addEventListener('mousemove', handleMouseMove)
-    raf = requestAnimationFrame(animate)
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)
-      cancelAnimationFrame(raf)
+      if (raf !== null) cancelAnimationFrame(raf)
     }
   }, [])
 
@@ -58,10 +73,15 @@ function Portfolio() {
     }
 
     if (window.location.hash) {
-      const targetHash = window.location.hash
       setTimeout(() => {
-        const el = document.querySelector(targetHash)
-        if (el) el.scrollIntoView({ behavior: 'auto' })
+        try {
+          const rawHash = window.location.hash.replace(/^#/, '')
+          const id = decodeURIComponent(rawHash)
+          const el = document.getElementById(id) || (typeof CSS !== 'undefined' && CSS.escape ? document.querySelector(`#${CSS.escape(rawHash)}`) : null)
+          if (el) el.scrollIntoView({ behavior: 'auto' })
+        } catch {
+          // Ignore invalid hash selector safely
+        }
       }, 100)
     }
   }, [])

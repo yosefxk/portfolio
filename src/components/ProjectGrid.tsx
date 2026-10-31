@@ -60,7 +60,13 @@ export function ProjectCard({ project, index, onPreview }: ProjectCardProps) {
       onClick={() => onPreview(project)}
       role="button"
       tabIndex={0}
-      onKeyDown={e => e.key === 'Enter' && onPreview(project)}
+      onKeyDown={e => {
+        if (e.target !== e.currentTarget) return
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          onPreview(project)
+        }
+      }}
       aria-label={`View ${project.name} case study`}
     >
       {/* Top glow line */}
@@ -77,6 +83,9 @@ export function ProjectCard({ project, index, onPreview }: ProjectCardProps) {
           alt={`${project.name} preview`}
           className="card-thumbnail"
           loading="lazy"
+          onError={(e) => {
+            e.currentTarget.style.opacity = '0.5'
+          }}
         />
         <div className="card-thumbnail-overlay">
           <span className="view-case-study-badge">
